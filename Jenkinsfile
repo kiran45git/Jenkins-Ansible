@@ -2,13 +2,13 @@ pipeline {
     agent any
     
     environment {
-        ANSIBLE_PRIVATE_KEY=credentials('private-key') 
+        ANSIBLE_PRIVATE_KEY=credentials('my-private-key') 
     }
 
     stages {
         stage('Git-Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/jaiswaladi2468/Jenkins-Ansible.git'
+                git branch: 'main', url: https://github.com/kiran45git/Jenkins-Ansible.git
             }
         }
         

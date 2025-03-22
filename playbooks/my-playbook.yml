@@ -17,11 +17,14 @@
       ansible.builtin.stat:
         path: /opt/nexus
       register: stat_result
-    - name: Download Nexus
-      ansible.builtin.get_url:
-        url: https://download.sonatype.com/nexus/3/nexus-3.60.0-02-unix.tar.gz
-        dest: /opt/
-      register: download_result
+- name: Download Nexus
+  ansible.builtin.get_url:
+    url: "https://download.sonatype.com/nexus/3/nexus-3.60.0-02-unix.tar.gz"
+    dest: "/opt/nexus.tar.gz"
+    timeout: 60
+    force: yes
+    validate_certs: no
+  register: download_result
     - name: Untar nexus installer
       ansible.builtin.unarchive:
         src: "{{download_result.dest}}"
